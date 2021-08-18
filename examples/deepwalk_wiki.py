@@ -6,6 +6,7 @@ from ge import DeepWalk
 from sklearn.linear_model import LogisticRegression
 
 import matplotlib.pyplot as plt
+# networkx-2.6.2
 import networkx as nx
 from sklearn.manifold import TSNE
 

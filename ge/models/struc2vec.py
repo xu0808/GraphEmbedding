@@ -25,6 +25,7 @@ from collections import ChainMap, deque
 
 import numpy as np
 import pandas as pd
+# fastdtw-0.3.4
 from fastdtw import fastdtw
 from gensim.models import Word2Vec
 from joblib import Parallel, delayed

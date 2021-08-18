@@ -107,7 +107,7 @@ class SDNE(object):
                 print('batch_size({0}) > node_size({1}),set batch_size = {1}'.format(
                     batch_size, self.node_size))
                 batch_size = self.node_size
-            return self.model.fit([self.A.todense(), self.L.todense()], [self.A.todense(), self.L.todense()],
+            return self.model.fit([K.cast_to_floatx(self.A.todense()), K.cast_to_floatx(self.L.todense())],
                                   batch_size=batch_size, epochs=epochs, initial_epoch=initial_epoch, verbose=verbose,
                                   shuffle=False, )
         else:
@@ -144,7 +144,7 @@ class SDNE(object):
 
     def get_embeddings(self):
         self._embeddings = {}
-        embeddings = self.emb_model.predict(self.A.todense(), batch_size=self.node_size)
+        embeddings = self.emb_model.predict(K.cast_to_floatx(self.A.todense()), batch_size=self.node_size)
         look_back = self.idx2node
         for i, embedding in enumerate(embeddings):
             self._embeddings[look_back[i]] = embedding
